@@ -32,12 +32,11 @@ $ pip install scipy
 ```
 
 ### Data Preparation
-Go to the folder of each dataset (i.e. ```data/omniglot```, ```data/mimgnet```) and run ```python get_data.py``` there. For example, to download miniImageNet dataset and preprocess it,
 ```
-$ cd ./data/mimgnet
-$ python get_data.py
+$ python get_data.py --dataset omniglot
+$ python get_data.py --dataset mimgnet
 ```
-It will take some time to download and preprocess each dataset.
+It will take some time to download each of the datasets.
 
 ## Results
 The results in the main paper (average over 1000 episodes, with a single run):
