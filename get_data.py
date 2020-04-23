@@ -44,6 +44,7 @@ if args.dataset == 'omniglot':
   print("Downloading train.npy of Omniglot\n")
   download_file('https://www.dropbox.com/s/h13g4b2awd7xdr6/train.npy?dl=1',
       os.path.join(path, 'train.npy'))
+
   print("Downloading test.npy of Omniglot\n")
   download_file('https://www.dropbox.com/s/w313ybz6rls1e83/test.npy?dl=1',
       os.path.join(path, 'test.npy'))
@@ -59,7 +60,6 @@ elif args.dataset == 'mimgnet':
   print("Downloading train.npy of miniImageNet\n")
   download_file('https://www.dropbox.com/s/ir54llgjfjv3naa/train.npy?dl=1',
       os.path.join(path, 'train.npy'))
-  print("Downloading done.\n")
 
   print("Downloading test.npy of miniImageNet\n")
   download_file('https://www.dropbox.com/s/i40h3wyjlpxeesr/test.npy?dl=1',
