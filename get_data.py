@@ -1,4 +1,5 @@
 """
+Authr: Hayeon Lee and Hae Beom Lee
 2020/04/24
 Script for downloading Omniglot or miniImageNet dataset
 Run this file as follows:
@@ -19,19 +20,19 @@ if not os.path.isdir('data'):
   os.makedirs('data')
 
 def download_file(url, filename):
-    """
-    Helper method handling downloading large files from `url`
-    to `filename`. Returns a pointer to `filename`.
-    """
-    chunkSize = 1024
-    r = requests.get(url, stream=True)
-    with open(filename, 'wb') as f:
-        pbar = tqdm( unit="B", total=int( r.headers['Content-Length'] ) )
-        for chunk in r.iter_content(chunk_size=chunkSize):
-            if chunk: # filter out keep-alive new chunks
-                pbar.update (len(chunk))
-                f.write(chunk)
-    return filename
+  """
+  Helper method handling downloading large files from `url`
+  to `filename`. Returns a pointer to `filename`.
+  """
+  chunkSize = 1024
+  r = requests.get(url, stream=True)
+  with open(filename, 'wb') as f:
+    pbar = tqdm( unit="B", total=int( r.headers['Content-Length'] ) )
+    for chunk in r.iter_content(chunk_size=chunkSize):
+      if chunk: # filter out keep-alive new chunks
+        pbar.update (len(chunk))
+        f.write(chunk)
+  return filename
 
 # download Omniglot dataset
 if args.dataset == 'omniglot':
