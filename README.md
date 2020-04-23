@@ -84,7 +84,7 @@ The results from running this repo (average over 1000 episodes, with a single ru
 | Meta-dropout | __96.17±0.15__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
 
 ### Visualization of Decision Boundary
-<img align="right" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
+<img align="right" width="900" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
 
 ### Visualization of Stochastic Features
 Omniglot examples
