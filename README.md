@@ -70,6 +70,8 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --datas
 $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
 ```
 
+&nbsp;
+
 ## Results
 The results in the main paper (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
@@ -109,6 +111,8 @@ miniImageNet <img align="center" width="199" src="https://github.com/haebeom-lee
 ### Adversarial Robustness
 Lastly, in the main paper, we also performed experiments on adversarial robustness. Our meta-dropout seems to improve both clean and adversarial robustness. Further, meta-dropout seems to improve robustness over various types of attacks, such as L1, L2, and Linf.
 <img align="center" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
+
+&nbsp;
 
 ## Citation
 If you found the provided code useful, please cite our work.
