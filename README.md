@@ -83,6 +83,18 @@ The results from running this repo (average over 1000 episodes, with a single ru
 | MAML | 94.63±0.17          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
 | Meta-dropout | __96.17±0.15__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
 
+### Visualization of Decision Boundary
+<img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
+
+### Visualization of Stochastic Features
+Omniglot examples
+<img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/feature_omniglot.gif">
+
+miniImageNet examples
+<img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/feature_mimgnet.gi">
+
+### Adversarial Robustness
+<img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
 
 ## Citation
 If you found the provided code useful, please cite our work.
