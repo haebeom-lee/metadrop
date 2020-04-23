@@ -40,13 +40,13 @@ $ python get_data.py
 It will take some time to download and preprocess each dataset.
 
 ## Results
-The results in the main paper (average over single run, total 1000 episodes:
+The results in the main paper (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
 | ------| ---------------- | ----------------- | ------------------ | ------------------- |
 | MAML | 95.23±0.17          | 98.38±0.07          | 49.58±0.65     | 64.55±0.52          |
 | Meta-dropout | __96.63±0.13__ | __98.73±0.06__   | __51.93±0.67__ | __67.42±0.52__      |
 
-The results from running this repo (average over single run, total 1000 episodes):
+The results from running this repo (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
 | ------| ---------------- | ----------------- | ------------------ | ------------------- |
 | MAML | 94.63±0.17          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
