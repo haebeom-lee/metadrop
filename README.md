@@ -87,15 +87,10 @@ The results from running this repo (average over 1000 episodes, with a single ru
 <img align="right" width="900" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
 
 ### Visualization of Stochastic Features
-Omniglot examples
-
 <img align="center" width="250" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ori.png">
 <img align="center" width="250" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
 <img align="center" width="250" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch2.gif">
 <img align="center" width="250" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
-
-miniImageNet examples
-<img align="center" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/feature_mimgnet.gi">
 
 ### Adversarial Robustness
 <img align="center" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
