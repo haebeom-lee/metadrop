@@ -82,12 +82,14 @@ The results from running this repo (average over 1000 episodes, with a single ru
 | ------| ---------------- | ----------------- | ------------------ | ------------------- |
 | MAML | 94.63±0.17          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
 | Meta-dropout | __96.17±0.15__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
-\
+
+&nbsp;
 
 ### T-SNE Visualization of Decision Boundary
 The below figures visualize the learned decision boundaries of MAML and meta-dropout. We can see that the perturbations from meta-dropout generate datapoints that are close to the decision boundaries for the classification task at the test time, which could effectively improve the generalization accuracy.
 <img align="right" width="900" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
-\
+
+&nbsp;
 
 ### Visualization of Stochastic Features
 We also visualize the stochastic features at lower layers of convolutional neural networks. We can roughly understand how each of the training examples perturbs at the latent feature space.
@@ -101,7 +103,8 @@ miniImageNet <img align="center" width="199" src="https://github.com/haebeom-lee
 <img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch1.gif">
 <img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch2.gif">
 <img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch3.gif">
-\
+
+&nbsp;
 
 ### Adversarial Robustness
 Lastly, in the main paper, we also performed experiments on adversarial robustness. Our meta-dropout seems to improve both clean and adversarial robustness. Further, meta-dropout seems to improve robustness over various types of attacks, such as L1, L2, and Linf.
