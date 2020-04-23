@@ -57,9 +57,9 @@ elif args.dataset == 'mimgnet':
   if not os.path.isdir(path):
     os.makedirs(path)
 
-  #print("Downloading train.npy of miniImageNet\n")
-  #download_file('https://www.dropbox.com/s/ir54llgjfjv3naa/train.npy?dl=1',
-  #    os.path.join(path, 'train.npy'))
+  print("Downloading train.npy of miniImageNet\n")
+  download_file('https://www.dropbox.com/s/ir54llgjfjv3naa/train.npy?dl=1',
+      os.path.join(path, 'train.npy'))
 
   print("Downloading test.npy of miniImageNet\n")
   download_file('https://www.dropbox.com/s/i40h3wyjlpxeesr/test.npy?dl=1',
