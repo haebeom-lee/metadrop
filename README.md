@@ -39,6 +39,9 @@ $ python get_data.py --dataset mimgnet
 It will take some time to download each of the datasets.
 
 ## Run
+- Run one of the followings.
+- Also, take a look at the folder ./runfiles for how to run MAML models as well.
+
 Omniglot 1-shot experiment
 ```
 # Meta-training
