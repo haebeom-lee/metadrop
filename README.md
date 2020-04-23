@@ -23,12 +23,10 @@ $ conda install -c anaconda cudatoolkit=9.0
 $ conda install -c anaconda cudnn
 ```
 
-And for data preprocessing,
+And for data downloading,
 ```
 $ pip install tqdm
 $ pip install requests
-$ pip install Pillow
-$ pip install scipy
 ```
 
 ### Data Preparation
@@ -70,6 +68,8 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --datas
 $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
 ```
 
+&nbsp;
+
 ## Results
 The results in the main paper (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
@@ -83,17 +83,35 @@ The results from running this repo (average over 1000 episodes, with a single ru
 | MAML | 94.63±0.17          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
 | Meta-dropout | __96.17±0.15__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
 
-### Visualization of Decision Boundary
+&nbsp;
+
+### T-SNE Visualization of Decision Boundary
+The below figures visualize the learned decision boundaries of MAML and meta-dropout. We can see that the perturbations from meta-dropout generate datapoints that are close to the decision boundaries for the classification task at the test time, which could effectively improve the generalization performance.
 <img align="right" width="900" src="https://github.com/haebeom-lee/metadrop/blob/master/images/decision_boundary.png">
 
+&nbsp;
+
 ### Visualization of Stochastic Features
-Omniglot   <img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ori.png">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch2.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
+We also visualize the stochastic features at lower layers of convolutional neural networks. We can roughly understand how each of the training examples perturbs at the latent feature space.
+
+Omniglot <img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ori.png">
+<img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch2.gif">
+<img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
+<img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
+
+miniImageNet <img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ori.png">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch1.gif">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch2.gif">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch3.gif">
+
+&nbsp;
 
 ### Adversarial Robustness
+Lastly, in the main paper, we also performed experiments on adversarial robustness. Our meta-dropout seems to improve both clean and adversarial robustness. Further, meta-dropout seems to improve robustness over various types of attacks at the same time, such as L1, L2, and Linf.
+
 <img align="center" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
+
+&nbsp;
 
 ## Citation
 If you found the provided code useful, please cite our work.
