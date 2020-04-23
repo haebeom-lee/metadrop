@@ -23,12 +23,10 @@ $ conda install -c anaconda cudatoolkit=9.0
 $ conda install -c anaconda cudnn
 ```
 
-And for data preprocessing,
+And for data downloading,
 ```
 $ pip install tqdm
 $ pip install requests
-$ pip install Pillow
-$ pip install scipy
 ```
 
 ### Data Preparation
