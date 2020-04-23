@@ -75,23 +75,6 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --datas
 $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
 ```
 
-# Meta-training
-$ python main.py \
-  --gpu_id 0 \
-  --savedir "./results/mimgnet/taml" --id_dataset 'mimgnet' --ood_dataset 'cub' \
-  --mode 'meta_train' --metabatch 1 --n_steps 5 --way 5 --max_shot 50 --query 15 \
-  --n_train_iters 80000 --meta_lr 1e-4 \
-  --alpha_on --omega_on --gamma_on --z_on
-
-# Meta-testing
-$ python main.py \
-  --gpu_id 0 \
-  --savedir "./results/mimgnet/taml" --id_dataset 'mimgnet' --ood_dataset 'cub' \
-  --mode 'meta_test' --metabatch 1 --n_steps 10 --way 5 --max_shot 50 --query 15 \
-  --n_test_episodes 1000 \
-  --alpha_on --omega_on --gamma_on --z_on --n_mc_samples 10
-```
-
 ## Results
 The results in the main paper (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
