@@ -44,9 +44,9 @@ It will take some time to download and preprocess each dataset.
 If you found the provided code useful, please cite our work.
 ```
 @inproceedings{
-    lee2020l2b,
-    title={Learning to Balance: Bayesian Meta-Learning for Imbalanced and Out-of-distribution Tasks},
-    author={Hae Beom Lee and Hayeon Lee and Donghyun Na and Saehoon Kim and Minseop Park and Eunho Yang and Sung Ju Hwang},
+    lee2020metadrop,
+    title={Meta Dropout: Learning to Perturb Latent Features for Generalization},
+    author={Hae Beom Lee and Taewook Nam and Eunho Yang and Sung Ju Hwangg},
     booktitle={ICLR},
     year={2020}
 }
