@@ -94,7 +94,7 @@ miniImageNet examples
 <img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/feature_mimgnet.gi">
 
 ### Adversarial Robustness
-<img align="right" width="700" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
+<img align="right" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
 
 ## Citation
 If you found the provided code useful, please cite our work.
