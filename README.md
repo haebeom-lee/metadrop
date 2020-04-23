@@ -92,10 +92,10 @@ Omniglot <img align="center" width="205" src="https://github.com/haebeom-lee/met
 <img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
 <img align="center" width="205" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
 
-miniImageNet <img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ori.png">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch1.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch2.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch3.gif">
+miniImageNet <img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ori.png">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch1.gif">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch2.gif">
+<img align="center" width="199" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch3.gif">
 
 ### Adversarial Robustness
 <img align="center" width="1000" src="https://github.com/haebeom-lee/metadrop/blob/master/images/adversarial_robustness.png">
