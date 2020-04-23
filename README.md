@@ -88,9 +88,9 @@ The results from running this repo (average over 1000 episodes, with a single ru
 
 ### Visualization of Stochastic Features
 Omniglot <img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ori.png">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch2.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
-<img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
+<img align="center" width="210" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch2.gif">
+<img align="center" width="210" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch1.gif">
+<img align="center" width="210" src="https://github.com/haebeom-lee/metadrop/blob/master/images/omni_ch3.gif">
 
 miniImateNet <img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ori.png">
 <img align="center" width="200" src="https://github.com/haebeom-lee/metadrop/blob/master/images/mimg_ch1.gif">
