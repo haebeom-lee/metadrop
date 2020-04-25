@@ -11,7 +11,7 @@ python main.py \
   --query 15 \
   --n_train_iters 40000 \
   --meta_lr 1e-3 \
-  --n_test_mc_samp 1
+  --n_test_mc_samp 3
 
 python main.py \
   --savedir './results/metadrop/omni_5shot' \

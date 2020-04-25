@@ -9,8 +9,9 @@ python main.py \
   --way 5 \
   --shot 1 \
   --query 15 \
+  --n_train_iters 60000 \
   --meta_lr 1e-4 \
-  --n_test_mc_samp 1
+  --n_test_mc_samp 3
 
 python main.py \
   --savedir './results/metadrop/mimgnet_1shot' \
@@ -23,5 +24,6 @@ python main.py \
   --way 5 \
   --shot 1 \
   --query 15 \
+  --n_train_iters 60000 \
   --meta_lr 1e-4 \
   --n_test_mc_samp 30
