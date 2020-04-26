@@ -11,7 +11,7 @@ python main.py \
   --query 15 \
   --n_train_iters 60000 \
   --meta_lr 1e-4 \
-  --n_test_mc_samp 3
+  --n_test_mc_samp 1
 
 python main.py \
   --savedir './results/metadrop/mimgnet_1shot' \

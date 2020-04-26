@@ -10,8 +10,8 @@ python main.py \
   --shot 1 \
   --query 15 \
   --n_train_iters 40000 \
-  --meta_lr 1e-3 \
-  --n_test_mc_samp 3
+  --meta_lr 3e-4 \
+  --n_test_mc_samp 1
 
 python main.py \
   --savedir './results/metadrop/omni_1shot' \
@@ -25,5 +25,5 @@ python main.py \
   --shot 1 \
   --query 15 \
   --n_train_iters 40000 \
-  --meta_lr 1e-3 \
+  --meta_lr 3e-4 \
   --n_test_mc_samp 30
