@@ -68,6 +68,25 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 
 $ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 40000 --meta_lr 1e-3 --n_test_mc_samp 30
 ```
 
+## Visualization
+Visualization needs additional packages.
+```
+$ pip install matplotlib sklearn
+```
+
+First, export necessary statistics by changing `--mode` into `export`.
+For example, 
+```
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'export' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 40000 --meta_lr 3e-4 --n_test_mc_samp 30
+```
+
+Then, run `plot.py` with `--savedir` argument.
+For example,
+```
+$ python export --savedir './results/metadrop/omni_1shot'
+```
+This will generate plots under `plot` directory in the `savedir`.
+
 &nbsp;
 
 ## Results
