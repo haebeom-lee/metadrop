@@ -24,7 +24,7 @@ class Data:
     else:
       raise ValueError('No such dataset %s' % args.dataset)
 
-  def generate_episode(self, args, meta_training=True, n_episodes=1):
+  def generate_episode(self, args, meta_training=True, n_episodes=1, classes=None):
     generate_label = lambda way, n_samp: np.repeat(np.eye(way), n_samp, axis=0)
     n_way, n_shot, n_query = args.way, args.shot, args.query
     (K,x) = (self.K_mtr, self.x_mtr) if meta_training else (self.K_mte, self.x_mte)
@@ -32,7 +32,8 @@ class Data:
     xtr, ytr, xte, yte = [], [], [], []
     for t in range(n_episodes):
       # sample WAY classes
-      classes = np.random.choice(range(K), size=n_way, replace=False)
+      if classes is None:
+        classes = np.random.choice(range(K), size=n_way, replace=False)
 
       xtr_t = []
       xte_t = []
