@@ -185,10 +185,41 @@ def meta_test():
   f.write(result)
   f.close()
 
+def export():
+  export_net = model.export()
+
+  config = tf.ConfigProto()
+  config.gpu_options.allow_growth = True
+  sess = tf.Session(config=config)
+  saver = tf.train.Saver(tnet_weights)
+  saver.restore(sess, os.path.join(args.savedir, 'model'))
+
+  outs = []
+  args.way = 2
+  for c in range(10):
+    xtr, ytr, xte, yte = data.generate_episode(args, meta_training=False, n_episodes=1, classes=[c, c+5])
+    fd = {
+      model.xtr_2way: xtr[0],
+      model.ytr_2way: ytr[0],
+      model.xte_2way: xte[0],
+      model.yte_2way: yte[0]
+    }
+    out = sess.run(export_net, feed_dict=fd)
+    out['ytr'] = np.argmax(ytr[0], axis=1)
+    out['yte'] = np.argmax(yte[0], axis=1)
+    outs.append(out)
+
+  import pickle
+  with open(os.path.join(args.savedir, 'export.pkl'), 'wb') as f:
+      pickle.dump(outs, f)
+
+
 if __name__=='__main__':
   if args.mode == 'meta_train':
     meta_train()
   elif args.mode == 'meta_test':
     meta_test()
+  elif args.mode == 'export':
+    export()
   else:
     raise ValueError('Invalid mode %s' % args.mode)
