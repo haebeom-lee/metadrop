@@ -140,3 +140,76 @@ class MetaDropout:
     net['acc'] = acc
     net['weights'] = tf.trainable_variables()
     return net
+
+  # last layer activation
+  def forward_h(self, x, theta, phi, sample=False):
+    x = tf.reshape(x, [-1, self.xdim, self.xdim, self.input_channel])
+    for l in [1,2,3,4]:
+      wt, bt = theta['conv%d_w'%l], theta['conv%d_b'%l]
+      wp, bp = phi['conv%d_w'%l], phi['conv%d_b'%l]
+      x = conv_block(x, wt, bt, wp, bp, sample=sample, bn_scope='conv%d_bn'%l, maml=self.maml)
+    x = flatten(x)
+    return x
+
+  # collect necessary statistics for visualization
+  def export(self):
+    n_export_samp = 10
+
+    self.xtr_2way = tf.placeholder(tf.float32, [None, self.xdim*self.xdim*self.input_channel], name='xtr_2way')
+    self.xte_2way = tf.placeholder(tf.float32, [None, self.xdim*self.xdim*self.input_channel], name='xte_2way')
+    self.ytr_2way = tf.placeholder(tf.float32, [None, 2], name='ytr_2way')
+    self.yte_2way = tf.placeholder(tf.float32, [None, 2], name='yte_2way')
+    xtr, ytr, xte, yte = self.xtr_2way, self.ytr_2way, self.xte_2way, self.yte_2way
+
+    theta = self.get_theta(reuse=True)
+    phi = self.get_phi(reuse=True)
+
+    # use random 2 columns
+    theta['dense_w'] = theta['dense_w'][:, :2]
+    theta['dense_b'] = theta['dense_b'][:2]
+    phi['dense_w'] = phi['dense_w'][:, :2]
+    phi['dense_b'] = phi['dense_b'][:2]
+
+    # stepwise collection
+    htr, hte = [], []
+    w, b = [], []
+    if self.maml is False:
+      htr_sample = []
+
+    for i in range(self.n_steps):
+      htr.append(self.forward_h(xtr, theta, phi, sample=False))
+      hte.append(self.forward_h(xte, theta, phi, sample=False))
+      if self.maml is False:
+        htr_sample.append([self.forward_h(xtr, theta, phi, sample=True) for _ in range(n_export_samp)])
+      w.append(theta['dense_w'])
+      b.append(theta['dense_b'])
+
+      inner_loss = []
+      for j in range(self.n_test_mc_samp):
+        inner_logits = self.forward(xtr, theta, phi, sample=True)
+        inner_loss.append(cross_entropy(inner_logits, ytr))
+      inner_loss = tf.reduce_mean(inner_loss)
+
+      grads = tf.gradients(inner_loss, list(theta.values())) # compute gradients
+      gradients = dict(zip(theta.keys(), grads))
+
+      theta = dict(zip(theta.keys(),
+        [theta[key] - self.inner_lr * gradients[key] for key in theta.keys()]))
+
+    htr.append(self.forward_h(xtr, theta, phi, sample=False))
+    hte.append(self.forward_h(xte, theta, phi, sample=False))
+    w.append(theta['dense_w'])
+    b.append(theta['dense_b'])
+    if self.maml is False:
+      htr_sample.append([self.forward_h(xtr, theta, phi, sample=True) for _ in range(n_export_samp)])
+
+    out = {}
+    out['htr'] = tf.stack(htr)
+    out['hte'] = tf.stack(hte)
+    out['w'] = tf.stack(w)
+    out['b'] = tf.stack(b)
+    if self.maml is False:
+      out['htr_sample'] = tf.stack(htr_sample)
+
+    return out
+

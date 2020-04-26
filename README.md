@@ -40,6 +40,20 @@ It will take some time to download each of the datasets.
 - Run one of the followings.
 - Also, take a look at the folder ./runfiles for how to run MAML models as well.
 
+__miniImageNet 1-shot__ experiment
+```
+# Meta-training / Meta-testing
+$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_1shot' --dataset 'mimgnet' --mode 'meta_train' --metabatch 4 --inner_lr 0.01 --n_steps 5 --way 5 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 1
+$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_1shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
+```
+
+__miniImageNet 5-shot__ experiment
+```
+# Meta-training / Meta-testing
+$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_train' --metabatch 4 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 1
+$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
+```
+
 __Omniglot 1-shot__ experiment
 ```
 # Meta-training / Meta-testing
@@ -54,19 +68,24 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 
 $ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 40000 --meta_lr 1e-3 --n_test_mc_samp 30
 ```
 
-__miniImageNet 1-shot__ experiment
+## Visualization
+Visualization needs additional packages.
 ```
-# Meta-training / Meta-testing
-$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_1shot' --dataset 'mimgnet' --mode 'meta_train' --metabatch 4 --inner_lr 0.01 --n_steps 5 --way 5 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 1
-$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_1shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
+$ pip install matplotlib sklearn
 ```
 
-__miniImageNet 5-shot__ experiment
+First, export necessary statistics by changing `--mode` into `export`.
+For example, 
 ```
-# Meta-training / Meta-testing
-$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_train' --metabatch 4 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 1
-$ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'export' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 40000 --meta_lr 3e-4 --n_test_mc_samp 30
 ```
+
+Then, run `plot.py` with `--savedir` argument.
+For example,
+```
+$ python export --savedir './results/metadrop/omni_1shot'
+```
+This will generate plots under `plot` directory in the `savedir`.
 
 &nbsp;
 
