@@ -92,7 +92,14 @@ tnet_weights = tnet['weights']
 # meta-training
 def meta_train():
   global_step = tf.train.get_or_create_global_step()
-  optim = tf.train.AdamOptimizer(args.meta_lr)
+
+  #if (not args.maml) and args.dataset == 'omniglot' and args.shot == 1:
+  #  lr = tf.train.piecewise_constant(tf.cast(global_step, tf.int32),
+  #      [2000], [args.meta_lr, 0.1*args.meta_lr])
+  #else:
+  lr = tf.convert_to_tensor(args.meta_lr)
+
+  optim = tf.train.AdamOptimizer(lr)
 
   if args.maml:
     var_list = [v for v in net_weights if 'phi' not in v.name]
@@ -130,7 +137,7 @@ def meta_train():
     meta_train_logger.accum(sess.run(meta_train_to_run, feed_dict=fd_mtr))
 
     if i % 50 == 0:
-      line = 'Iter %d start, learning rate %f' % (i, args.meta_lr)
+      line = 'Iter %d start, learning rate %f' % (i, sess.run(lr))
       print('\n' + line)
       logfile.write('\n' + line + '\n')
       meta_train_logger.print_(header='meta_train', episode=i*args.metabatch,
