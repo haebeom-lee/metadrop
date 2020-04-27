@@ -10,7 +10,7 @@ python main.py \
   --shot 1 \
   --query 15 \
   --n_train_iters 60000 \
-  --meta_lr 1e-3 \
+  --meta_lr 3e-4 \
   --n_test_mc_samp 1
 
 python main.py \
@@ -25,5 +25,5 @@ python main.py \
   --shot 1 \
   --query 15 \
   --n_train_iters 60000 \
-  --meta_lr 1e-3 \
+  --meta_lr 3e-4 \
   --n_test_mc_samp 30
