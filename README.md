@@ -40,6 +40,20 @@ It will take some time to download each of the datasets.
 - Run one of the followings.
 - Also, take a look at the folder ./runfiles for how to run MAML models as well.
 
+__Omniglot 1-shot__ experiment
+```
+# Meta-training / Meta-testing
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'meta_train' --metabatch 4 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-3 --n_test_mc_samp 1
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-3 --n_test_mc_samp 30
+```
+
+__Omniglot 5-shot__ experiment
+```
+# Meta-training / Meta-testing
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_train' --metabatch 4 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-3 --n_test_mc_samp 1
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-3 --n_test_mc_samp 30
+```
+
 __miniImageNet 1-shot__ experiment
 ```
 # Meta-training / Meta-testing
@@ -54,38 +68,22 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --datas
 $ python main.py --gpu_id 0 --savedir './results/metadrop/mimgnet_5shot' --dataset 'mimgnet' --mode 'meta_test' --metabatch 1 --inner_lr 0.01 --n_steps 5 --way 5 --shot 5 --query 15 --n_train_iters 60000 --meta_lr 1e-4 --n_test_mc_samp 30
 ```
 
-__Omniglot 1-shot__ experiment
-```
-# Meta-training / Meta-testing
-$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'meta_train' --metabatch 8 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 40000 --meta_lr 3e-4 --n_test_mc_samp 1
-$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 40000 --meta_lr 3e-4 --n_test_mc_samp 30
-```
-
-__Omniglot 5-shot__ experiment
-```
-# Meta-training / Meta-testing
-$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_train' --metabatch 6 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 40000 --meta_lr 1e-3 --n_test_mc_samp 1
-$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_5shot' --dataset 'omniglot' --mode 'meta_test' --metabatch 1 --n_steps 5 --inner_lr 0.4 --way 20 --shot 5 --query 15 --n_train_iters 40000 --meta_lr 1e-3 --n_test_mc_samp 30
-```
-
-## Visualization
-Visualization needs additional packages.
+## Decision Boundary Visualization
+Visualization needs the following additional package.
 ```
 $ pip install matplotlib sklearn
 ```
-
 First, export necessary statistics by changing `--mode` into `export`.
 For example, 
 ```
-$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'export' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 40000 --meta_lr 3e-4 --n_test_mc_samp 30
+$ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 'omniglot' --mode 'export' --metabatch 1 --n_steps 5 --inner_lr 0.1 --way 20 --shot 1 --query 15 --n_train_iters 60000 --meta_lr 1e-3 --n_test_mc_samp 30
 ```
-
 Then, run `plot.py` with `--savedir` argument.
 For example,
 ```
-$ python export --savedir './results/metadrop/omni_1shot'
+$ python plot.py --savedir './results/metadrop/omni_1shot'
 ```
-This will generate plots under `plot` directory in the `savedir`.
+This will generate decision boundary plots under `plot` directory in the `savedir`.
 
 &nbsp;
 
@@ -99,8 +97,8 @@ The results in the main paper (average over 1000 episodes, with a single run):
 The results from running this repo (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
 | ------| ---------------- | ----------------- | ------------------ | ------------------- |
-| MAML | 94.63±0.17          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
-| Meta-dropout | __96.17±0.15__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
+| MAML | 94.49±0.16          | 98.14±0.07          | 48.73±0.64     | 65.70±0.52          |
+| Meta-dropout | __96.24±0.14__ | __98.81±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
 
 &nbsp;
 
