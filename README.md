@@ -81,7 +81,7 @@ $ python main.py --gpu_id 0 --savedir './results/metadrop/omni_1shot' --dataset 
 Then, run `plot.py` with `--savedir` argument.
 For example,
 ```
-$ python export --savedir './results/metadrop/omni_1shot'
+$ python plot.py --savedir './results/metadrop/omni_1shot'
 ```
 This will generate decision boundary plots under `plot` directory in the `savedir`.
 
