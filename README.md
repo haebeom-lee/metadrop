@@ -97,7 +97,7 @@ The results in the main paper (average over 1000 episodes, with a single run):
 The results from running this repo (average over 1000 episodes, with a single run):
 |       | Omni. 1shot| Omni. 5shot | mImg. 1shot | mImg. 5shot |
 | ------| ---------------- | ----------------- | ------------------ | ------------------- |
-| MAML | 94.49±0.16          | 98.26±0.07          | 48.73±0.64     | 65.70±0.52          |
+| MAML | 94.49±0.16          | 98.14±0.07          | 48.73±0.64     | 65.70±0.52          |
 | Meta-dropout | __96.24±0.14__ | __98.86±0.06__   | __51.67±0.64__ | __68.12±0.53__      |
 
 &nbsp;
