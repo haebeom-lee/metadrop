@@ -93,10 +93,6 @@ tnet_weights = tnet['weights']
 def meta_train():
   global_step = tf.train.get_or_create_global_step()
 
-  #if (not args.maml) and args.dataset == 'omniglot' and args.shot == 1:
-  #  lr = tf.train.piecewise_constant(tf.cast(global_step, tf.int32),
-  #      [2000], [args.meta_lr, 0.1*args.meta_lr])
-  #else:
   lr = tf.convert_to_tensor(args.meta_lr)
 
   optim = tf.train.AdamOptimizer(lr)
@@ -219,7 +215,6 @@ def export():
   import pickle
   with open(os.path.join(args.savedir, 'export.pkl'), 'wb') as f:
       pickle.dump(outs, f)
-
 
 if __name__=='__main__':
   if args.mode == 'meta_train':
